@@ -119,12 +119,12 @@ def quickGet(f, recursive=False):
         print 'Downloaded \'' + out.name + '\' from \'' + f + '\''
 key = 'g3uu5vbgzb295dw'
 secret = 'xqnukbih7rlerzl'
-if os.path.exists(os.path.expanduser('~/.ARM-Dropbox.key')):
-    with f as open(os.path.expanduser('~/.ARM-Dropbox.key')):
-        key = f.read().strip()
-if os.path.exists(os.path.expanduser('~/.ARM-Dropbox.secret')):
-    with f as open(os.path.expanduser('~/.ARM-Dropbox.secret')):
-        key = f.read().strip()
+if os.path.exists(os.path.expanduser("~/.ARM-Dropbox.key")):
+    with open(os.path.expanduser("~/.ARM-Dropbox.key"),'r') as keyfile:
+        key = keyfile.read().strip()
+if os.path.exists(os.path.expanduser("~/.ARM-Dropbox.secret")):
+    with open(os.path.expanduser("~/.ARM-Dropbox.secret"),'r') as secretfile:
+        secret = secretfile.read().strip()
 ac, id = authenticate()
 client = dropbox.client.DropboxClient(ac)
 
