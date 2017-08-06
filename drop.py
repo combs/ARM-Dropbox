@@ -119,6 +119,12 @@ def quickGet(f, recursive=False):
         print 'Downloaded \'' + out.name + '\' from \'' + f + '\''
 key = 'g3uu5vbgzb295dw'
 secret = 'xqnukbih7rlerzl'
+if os.path.exists(os.path.expanduser('~/.ARM-Dropbox.key')):
+    with f as open(os.path.expanduser('~/.ARM-Dropbox.key)):
+        key = f.read().strip()
+if os.path.exists(os.path.expanduser('~/.ARM-Dropbox.secret')):
+    with f as open(os.path.expanduser('~/.ARM-Dropbox.secret)):
+        key = f.read().strip()
 ac, id = authenticate()
 client = dropbox.client.DropboxClient(ac)
 
@@ -145,7 +151,7 @@ if __name__=='__main__':
     elif '-ls' in sys.argv:
         try:
             dir, = sys.argv[sys.argv.index('-ls')+1:]
-            listDir(dir.replace(os.expanduser('~')+'/Dropbox'),'')
+            listDir(dir.replace(os.path.expanduser('~')+'/Dropbox'),'')
         except ValueError:
             print "Need directory to list"
     elif '-map' in sys.argv:
