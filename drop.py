@@ -151,7 +151,7 @@ if __name__=='__main__':
     elif '-ls' in sys.argv:
         try:
             dir, = sys.argv[sys.argv.index('-ls')+1:]
-            listDir(dir.replace(os.path.expanduser('~')+'/Dropbox'),'')
+            listDir(dir.replace(os.path.expanduser('~')+'/Dropbox',''))
         except ValueError:
             print "Need directory to list"
     elif '-map' in sys.argv:
