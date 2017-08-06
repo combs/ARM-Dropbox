@@ -73,7 +73,7 @@ def sync(rD):
                     mod['/'.join([lD,f])] = os.stat('/'.join([lD,f]))[-2]
                     file = open('/'.join([lD,f]),'rb')
                     data = client.put_file('/'.join([rD,f]),file,True)
-                    print 'Uploaded to \''+ data['path'] + '\''
+                    print 'Uploaded', f , 'to', data['path']
                     file.close()
             except KeyError:
                 mod['/'.join([lD,f])] = os.stat('/'.join([lD,f]))[-2]
